@@ -26,3 +26,15 @@
         |-- app.vue          根组件
         `-- routers/index.js 路由配置
 ````
+
+展示
+
+![1](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/1.jpg)
+
+![2](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/2.jpg)
+
+![3](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/3.jpg)
+
+![4](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/4.jpg)
+
+![5](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/5.jpg)
