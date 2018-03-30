@@ -21,7 +21,6 @@
 
 <script lang="babel">
     import cookie from 'js-cookie'
-    import config from '@/config'
 
     export default {
         data: ()=>({
@@ -51,8 +50,7 @@
             login(){
                 this.$refs.form.validate(async valid => {
                     if (valid) {
-                        const method = `/user/${config.ldap ? 'ldapLogin' : 'login'}`;
-                        const res = await Vue.fetch({method, data:this.form})
+                        const res = await Vue.fetch({methodL: '/user/login', data:this.form})
                         if(res && res.role > 10){
                             this.$store.commit('updateUserInfo',res);
                             cookie.set('user', res);

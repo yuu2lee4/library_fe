@@ -63,7 +63,7 @@
 </template>
 
 <script>
-  import dateFormat from '../../mixins/dateFormat';
+  import dateFormat from '@/mixins/dateFormat';
   export default {
     mixins: [dateFormat],
     data:()=> ({
