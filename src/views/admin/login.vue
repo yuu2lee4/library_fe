@@ -50,7 +50,7 @@
             login(){
                 this.$refs.form.validate(async valid => {
                     if (valid) {
-                        const res = await Vue.fetch({methodL: '/user/login', data:this.form})
+                        const res = await Vue.fetch({method: '/user/login', data:this.form})
                         if(res && res.role > 10){
                             this.$store.commit('updateUserInfo',res);
                             cookie.set('user', res);
