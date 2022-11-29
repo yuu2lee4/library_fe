@@ -5,7 +5,7 @@
         <el-col class="book" :span="4" v-for="(book,index) in books" :key="book._id" style="margin-bottom: 10px;">
             <a :href="'https://book.douban.com/subject/'+book.doubanID" target="_blank" :title="book.summary">
                 <el-card :body-style="{ padding: '0px' }">
-                    <img :src="book.images.large" class="image">
+                    <img :src="(book.images && book.images.large) || book.image" class="image">
                     <div style="padding: 10px;">
                         <div class="title" :title="book.title">{{book.title}}</div>
                         <div class="num clearfix">
