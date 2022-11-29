@@ -7,10 +7,10 @@
 
 
 项目运行指南：  
-1、安装node8.x，安装完后可在命令行输入node -v查看版本，以便确认安装成功  
-2、在命令行里，输入npm install -g nrm（nrm可以管理npm的源，安装完之后可以npm use taobao切换淘宝的源，也可以用yarn替代npm）  
+1、安装node18.x，安装完后可在命令行输入node -v查看版本，以便确认安装成功  
+2、在命令行里，输入npm install -g nrm（nrm可以管理npm的源，安装完之后可以nrm use taobao切换淘宝的源，也可以用yarn替代npm）  
 3、启动后端(https://github.com/yuu2lee4/library_be)  
-4、进入library_fe根目录输入npm install安装依赖，安装完后输入npm run dev就可以启动前端了,此时在浏览器访问http://localhost:4040即可看到界面  
+4、进入library_fe根目录输入yarn安装依赖，安装完后输入npm run dev就可以启动前端了,此时在浏览器访问http://localhost:4040即可看到界面  
 5、如果需要接入ldap，修改src/config.js即可
 
 目录结构:
