@@ -12,7 +12,7 @@
                 <el-col :span="12">
                     <el-form-item label="ISBN" prop="isbn">
                         <div class="ISBNWrap">
-                            <el-input placeholder="请填写该书的ISBN，然后点击右边按钮从豆瓣抓取信息" v-model="formData.isbn"></el-input>
+                            <el-input placeholder="请填写该书的ISBN，然后点击右边按钮抓取信息" v-model="formData.isbn"></el-input>
                             <el-button type="primary" class="btn" @click.native="fetchInfoFromDouBan">同步</el-button>
                         </div>
                     </el-form-item>
@@ -91,7 +91,6 @@
             doubanID: '',
             summary: '',
             image: '',
-            images: {},
             author: '',
             tag_1st: '',
             tag_2nd: ''
@@ -145,17 +144,14 @@
         }
     },
     methods: {
-        fetchInfoFromDouBan(){
+        async fetchInfoFromDouBan(){
             if(this.formData.isbn){
-                this.$http.jsonp(`https://api.douban.com/v2/book/isbn/${this.formData.isbn}`).then(res => {
-                    res = res.body
-                    this.formData.title = res.title
-                    this.formData.summary = res.summary
-                    this.formData.image = res.image
-                    this.formData.images = res.images
-                    this.formData.author = res.author[0]
-                    this.formData.doubanID = res.id
-                })
+                const res = await  Vue.fetch({method:`/book/isbn/${this.formData.isbn}`,type: 'get'});
+                this.formData.title = res.name
+                this.formData.summary = res.description
+                this.formData.image = res.photoUrl
+                this.formData.author = res.author
+                this.formData.doubanID = res.douban
             }else{
                 this.$message.warning('请填写ISBN！');
             }
