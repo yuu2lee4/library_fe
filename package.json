@@ -5,6 +5,7 @@
   "author": "yuri",
   "private": true,
   "scripts": {
+    "preinstall": "npx only-allow yarn",
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
     "build": "node build/build.js"
@@ -58,8 +59,7 @@
     "webpack-merge": "^4.2.2"
   },
   "engines": {
-    "node": ">= 18.0.0",
-    "npm": ">= 6.0.0"
+    "node": ">= 20.4.0"
   },
   "browserslist": [
     "> 1%",
