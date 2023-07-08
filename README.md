@@ -1,15 +1,8 @@
 ## 关于本项目
-该项目是我自学node所做的一个书架借阅管理系统(鲲鹏)，它分为后台管理系统和书籍借阅系统。后台管理系统可管理书籍的分类、录入(可通过isbn自动获取书籍信息)、和借出记录。书籍借阅系统可进行用户注册(公司里可用ldap)、书籍展示、书籍借阅归还。
-
-涉及到技术或者框架：vue2、element、es2015+  
-- es2015入门：http://es6.ruanyifeng.com/ es2015也叫es6
-- vue2：https://cn.vuejs.org/ 前端mvvm框架
-- element：http://element-cn.eleme.io/#/zh-CN/component/installation
-- lodash：http://lodash.think2011.net/  js工具库
-
+该项目是一个书架借阅管理系统(鲲鹏)，它分为后台管理系统和书籍借阅系统。后台管理系统可管理书籍的分类、录入(可通过isbn自动获取书籍信息)、和借出记录。书籍借阅系统可进行用户注册(公司里可用ldap)、书籍展示、书籍借阅归还。
 
 项目运行指南：  
-1、安装node18.x，安装完后可在命令行输入node -v查看版本，以便确认安装成功  
+1、安装node20.x，安装完后可在命令行输入node -v查看版本，以便确认安装成功  
 2、在命令行里，输入npm install -g nrm（nrm可以管理npm的源，安装完之后可以nrm use taobao切换淘宝的源，也可以用yarn替代npm）  
 3、启动后端(https://github.com/yuu2lee4/library_be)  
 4、进入library_fe根目录输入yarn安装依赖，安装完后输入npm run dev就可以启动前端了,此时在浏览器访问http://localhost:4040即可看到界面  
