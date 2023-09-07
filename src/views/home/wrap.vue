@@ -188,8 +188,12 @@
         },
         async beforeRouteEnter (to, from, next) {
             if(Vue.isLogin()){
-                const res = await Vue.fetch({method: '/user', type: 'get'});
-                cookie.set('user', res);
+                try {
+                    const res = await Vue.fetch({method: '/user', type: 'get'});
+                    cookie.set('user', res);
+                } catch(e) {
+                    cookie.remove('user');
+                }
                 next()
             }else{
                 next()
