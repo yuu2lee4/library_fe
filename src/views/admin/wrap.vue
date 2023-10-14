@@ -3,26 +3,24 @@
     <section id="leftPane" v-show="!fullScreen">
       <div class="top">鲲鹏管理后台</div>
       <el-menu
+        v-if="menu.length"
         class="menu"
         router
-        :default-openeds="['1']"
-        default-active="1-1"
+        :default-openeds="menuOpeneds"
+        :default-active="menuActive"
       >
-        <el-sub-menu index="1">
-          <template v-slot:title
-            ><el-icon><el-icon-message /></el-icon>书籍管理</template
-          >
-          <el-menu-item index="1-1" :route="{ path: '/admin/book/list' }"
-            >书籍列表</el-menu-item
-          >
-          <el-menu-item index="1-2" :route="{ path: '/admin/book/tagList' }"
-            >书籍分类</el-menu-item
-          >
-          <el-menu-item
-            index="1-3"
-            :route="{ path: '/admin/book/borrowedList' }"
-            >借出列表</el-menu-item
-          >
+        <el-sub-menu v-for="(sub, subindex) in menu" :key="sub.name" :index="`${subindex}`">
+          <template #title>
+            <el-icon><component :is="sub.icon" /></el-icon>{{sub.name}}
+          </template>
+          <el-menu-item 
+            v-for="(item, index) in sub.list"
+            :key="item.name"
+            :index="`${subindex}_${index}`"
+            :route="{ path: item.path }"
+            >
+            {{ item.name }}
+          </el-menu-item>
         </el-sub-menu>
       </el-menu>
     </section>
@@ -42,44 +40,67 @@
           class="pull-left"
           style="line-height: 18px"
         >
-          <el-breadcrumb-item>书籍管理</el-breadcrumb-item>
-          <el-breadcrumb-item>书籍列表</el-breadcrumb-item>
+          <el-breadcrumb-item v-for="item of breadcrumbList" :key="item">{{ item }}</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="tools pull-right">
-          <i
-            :class="fullscreenIcon"
-            :title="fullscreenText"
-            @click="gotoFullscreen"
-          ></i>
+          <el-icon :title="fullscreenText" @click="gotoFullscreen"><FullScreen /></el-icon>
         </div>
       </div>
-      <router-view v-slot="{ Component }" class="iframe">
-        <keep-alive>
-          <component :is="Component" />
-        </keep-alive>
-      </router-view>
+      <router-view class="iframe"/>
     </section>
   </div>
 </template>
 
 <script>
-import { Message as ElIconMessage } from '@element-plus/icons'
+import { Message, FullScreen } from '@element-plus/icons'
 import cookie from 'js-cookie'
 import { logout } from '@/assets/js/pub'
 
 export default {
   components: {
-    ElIconMessage,
+    Message,
+    FullScreen,
   },
   data: () => ({
     fullScreen: false, //全屏标志
+    menuActive: '0_0',
+    menuOpeneds: [],
+    breadcrumbList: [],
+    menu: [{
+        name: '书籍管理',
+        icon: 'Message',
+        list: [{
+          name: '书籍列表',
+          path: '/admin/book/list',
+        }, {
+          name: '书籍分类',
+          path: '/admin/book/tagList',
+        }, {
+          name: '借出列表',
+          path: '/admin/book/borrowedList',
+        }]
+    }],
   }),
   computed: {
-    fullscreenIcon() {
-      return this.fullScreen ? 'el-icon-minus' : 'el-icon-plus'
-    },
     fullscreenText() {
       return this.fullScreen ? '退出全屏' : '全屏'
+    },
+  },
+  watch: {
+    $route: {
+      handler(val) {
+        for (const [subindex, sub] of this.menu.entries()) {
+          for (const [index, item] of sub.list.entries()) {
+            if (item.path === val.path) {
+              this.menuActive = `${subindex}_${index}`
+              this.menuOpeneds = [`${subindex}`]
+              this.breadcrumbList = [sub.name, item.name];
+              break;
+            }
+          }
+        }
+      },
+      immediate: true
     },
   },
   beforeRouteEnter(to, from, next) {
