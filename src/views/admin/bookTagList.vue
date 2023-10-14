@@ -62,16 +62,19 @@ import { fetch } from '@/assets/js/fetch'
 
 export default {
   mixins: [dateFormat],
-  data: () => ({
-    tags: [],
-    selected: [],
-    total: 0,
-    pageSize: 10,
-    page: 1,
-      ElIconEdit,
-      ElIconDelete,
-      ElIconPlus,
-  }),
+  data() {
+    this.ElIconEdit = ElIconEdit
+    this.ElIconDelete = ElIconDelete
+    this.ElIconPlus = ElIconPlus
+
+    return {
+      tags: [],
+      selected: [],
+      total: 0,
+      pageSize: 10,
+      page: 1,
+    }
+  },
   created() {
     this.search()
   },

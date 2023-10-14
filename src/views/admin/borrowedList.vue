@@ -78,15 +78,18 @@ import { fetch } from '@/assets/js/fetch'
 
 export default {
   mixins: [dateFormat],
-  data: () => ({
-    ElIconUpload,
-    books: [],
-    exportURL: '',
-    exported: false,
-    total: 0,
-    pageSize: 10,
-    page: 1,
-  }),
+  data() {
+    this.ElIconUpload = ElIconUpload
+
+    return {
+      books: [],
+      exportURL: '',
+      exported: false,
+      total: 0,
+      pageSize: 10,
+      page: 1,
+    }
+  },
   created() {
     this.search()
   },

@@ -5,7 +5,6 @@
         <router-link class="logo_text" to="/">鲲鹏</router-link>
         <div class="pull-right" style="margin-top: 6px">
           <el-input
-            size="medium"
             placeholder="搜索你喜欢的"
             class="search"
             @keyup.enter="search"
@@ -30,14 +29,12 @@
           <template v-else>
             <el-button
               v-if="!config.ldap"
-              size="medium"
               type="danger"
               class="register"
               @click="registerVisible = true"
               >注册</el-button
             >
             <el-button
-              size="medium"
               :plain="true"
               type="success"
               class="login"
@@ -223,6 +220,7 @@ export default {
         }
       }
     }
+    this.ElIconSearch = ElIconSearch
     return {
       config,
       searchVal: '',
@@ -301,7 +299,6 @@ export default {
           { min: 6, message: '至少6个字符', trigger: 'blur' },
         ],
       },
-      ElIconSearch,
     }
   },
   async beforeRouteEnter(to, from, next) {
@@ -327,7 +324,7 @@ export default {
     search() {
       const s = this.searchVal.trim()
       this.searchVal = ''
-      router.push({ path: 'index', query: { s } })
+      this.$router.push({ path: 'index', query: { s } })
     },
     register() {
       this.$refs.registerForm.validate(async (valid) => {

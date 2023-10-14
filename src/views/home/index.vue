@@ -36,7 +36,7 @@
         <el-button
           type="danger"
           class="borrow"
-          size="mini"
+          size="small"
           :disabled="
             book.identifierList.length - book.borrowers.length <= 0 ||
             (userInfo &&

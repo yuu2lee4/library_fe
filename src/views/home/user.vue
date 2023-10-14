@@ -28,8 +28,7 @@
         label="作者"
         show-overflow-tooltip
         width="150"
-      >
-      </el-table-column>
+      />
       <el-table-column label="分类" show-overflow-tooltip width="120">
         <template v-slot="{ row }">
           <span>{{ row.tag_1st }}-{{ row.tag_2nd }}</span>
@@ -48,7 +47,7 @@
       </el-table-column>
       <el-table-column align="center" width="100" label="操作">
         <template v-slot="{ $index, row }">
-          <el-button size="mini" type="danger" @click="returnBook($index, row)">
+          <el-button size="small" type="danger" @click="returnBook($index, row)">
             归还
           </el-button>
         </template>
@@ -56,7 +55,6 @@
     </el-table>
   </div>
 </template>
-
 <script>
 import dateFormat from '@/mixins/dateFormat'
 import { fetch } from '@/assets/js/fetch'
@@ -84,7 +82,6 @@ export default {
   },
   methods: {
     async search() {
-      console.log(this.userInfo)
       const bookIds = this.userInfo.borrowedBooks.map((book) => book.id)
       if (bookIds.length) {
         let res = await fetch({
