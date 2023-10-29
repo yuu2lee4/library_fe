@@ -12,11 +12,11 @@
   },
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
-    "axios": "^1.5.1",
+    "axios": "^1.6.0",
     "date-fns": "^2.30.0",
-    "element-plus": "^2.4.0",
+    "element-plus": "^2.4.1",
     "js-cookie": "^2.2.1",
-    "vue": "^3.3.4",
+    "vue": "^3.3.7",
     "vue-router": "^4.2.5",
     "vuex": "^4.1.0"
   },
@@ -24,11 +24,11 @@
     "@rushstack/eslint-patch": "^1.5.1",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vue/eslint-config-prettier": "^8.0.0",
-    "eslint": "^8.51.0",
-    "eslint-plugin-vue": "^9.17.0",
+    "eslint": "^8.52.0",
+    "eslint-plugin-vue": "^9.18.1",
     "less": "^4.2.0",
     "prettier": "^3.0.3",
-    "vite": "^4.4.11"
+    "vite": "^4.5.0"
   },
   "engines": {
     "node": ">= 20.4.0"
