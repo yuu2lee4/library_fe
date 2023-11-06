@@ -1,5 +1,5 @@
 ## 关于本项目
-该项目是一个书架借阅管理系统(鲲鹏)，它分为后台管理系统和书籍借阅系统。后台管理系统可管理书籍的分类、录入(可通过isbn自动获取书籍信息)、和借出记录。书籍借阅系统可进行用户注册(公司里可用ldap)、书籍展示、书籍借阅归还。
+该项目是一个基于Vue3的书架借阅管理系统(鲲鹏)，它分为后台管理系统和书籍借阅系统。后台管理系统可管理书籍的分类、录入(可通过isbn自动获取书籍信息)、和借出记录。书籍借阅系统可进行用户注册(公司里可用ldap)、书籍展示、书籍借阅归还。
 
 项目运行指南：  
 1、安装node20.x，安装完后可在命令行输入node -v查看版本，以便确认安装成功  
@@ -32,3 +32,6 @@
 ![4](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/4.jpg)
 
 ![5](https://raw.githubusercontent.com/yuu2lee4/library_fe/master/static/5.jpg)
+
+## react版本
+https://github.com/yuu2lee4/library_react
