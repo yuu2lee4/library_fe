@@ -1,18 +1,8 @@
 <template>
   <div id="home_user">
-    <el-table
-      :data="borrowedBooks"
-      stripe
-      border
-      empty-text="未有借书"
-      style="width: 100%"
+    <el-table :data="borrowedBooks" stripe border empty-text="未有借书" style="width: 100%"
       >"
-      <el-table-column
-        property="title"
-        label="书名"
-        show-overflow-tooltip
-        width="200"
-      >
+      <el-table-column property="title" label="书名" show-overflow-tooltip width="200">
       </el-table-column>
       <el-table-column label="编号" width="100">
         <template v-slot="{ row }">
@@ -23,33 +13,23 @@
           }}
         </template>
       </el-table-column>
-      <el-table-column
-        property="author"
-        label="作者"
-        show-overflow-tooltip
-        width="150"
-      />
+      <el-table-column property="author" label="作者" show-overflow-tooltip width="150" />
       <el-table-column label="分类" show-overflow-tooltip width="120">
         <template v-slot="{ row }">
           <span>{{ row.tag_1st }}-{{ row.tag_2nd }}</span>
         </template>
       </el-table-column>
-      <el-table-column property="summary" label="简介" show-overflow-tooltip>
-      </el-table-column>
+      <el-table-column property="summary" label="简介" show-overflow-tooltip> </el-table-column>
       <el-table-column label="借书时间" width="250">
         <template v-slot="{ row }">
           <span>{{
-            dateFormat(
-              row.borrowers.find((user) => user.name == userInfo.name).date
-            )
+            dateFormat(row.borrowers.find((user) => user.name == userInfo.name).date)
           }}</span>
         </template>
       </el-table-column>
       <el-table-column align="center" width="100" label="操作">
         <template v-slot="{ $index, row }">
-          <el-button size="small" type="danger" @click="returnBook($index, row)">
-            归还
-          </el-button>
+          <el-button size="small" type="danger" @click="returnBook($index, row)"> 归还 </el-button>
         </template>
       </el-table-column>
     </el-table>

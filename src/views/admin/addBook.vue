@@ -9,13 +9,7 @@
           </router-link>
         </div>
       </template>
-      <el-form
-        :model="formData"
-        label-width="86px"
-        style="padding: 20px"
-        ref="form"
-        :rules="rules"
-      >
+      <el-form :model="formData" label-width="86px" style="padding: 20px" ref="form" :rules="rules">
         <el-row :gutter="40">
           <el-col :span="12">
             <el-form-item label="ISBN" prop="isbn">
@@ -24,25 +18,14 @@
                   placeholder="请填写该书的ISBN，然后点击右边按钮抓取信息"
                   v-model="formData.isbn"
                 ></el-input>
-                <el-button
-                  type="primary"
-                  class="btn"
-                  @click="fetchInfoFromDouBan"
-                  >同步</el-button
-                >
+                <el-button type="primary" class="btn" @click="fetchInfoFromDouBan">同步</el-button>
               </div>
             </el-form-item>
             <el-form-item label="标题" prop="title">
-              <el-input
-                placeholder="请填写该书的标题"
-                v-model="formData.title"
-              ></el-input>
+              <el-input placeholder="请填写该书的标题" v-model="formData.title"></el-input>
             </el-form-item>
             <el-form-item label="作者" prop="author">
-              <el-input
-                placeholder="请填写该书的作者"
-                v-model="formData.author"
-              ></el-input>
+              <el-input placeholder="请填写该书的作者" v-model="formData.author"></el-input>
             </el-form-item>
             <el-form-item label="一级分类" prop="tag_1st">
               <el-select v-model="formData.tag_1st">
@@ -57,12 +40,7 @@
             </el-form-item>
             <el-form-item label="二级分类" prop="tag_2nd">
               <el-select v-model="formData.tag_2nd">
-                <el-option
-                  v-for="item in tags_2nd"
-                  :label="item"
-                  :value="item"
-                  :key="item"
-                >
+                <el-option v-for="item in tags_2nd" :label="item" :value="item" :key="item">
                 </el-option>
               </el-select>
             </el-form-item>
@@ -86,16 +64,10 @@
               </el-select>
             </el-form-item>
             <el-form-item label="豆瓣ID" prop="doubanID">
-              <el-input
-                placeholder="请填写该书的豆瓣ID"
-                v-model="formData.doubanID"
-              ></el-input>
+              <el-input placeholder="请填写该书的豆瓣ID" v-model="formData.doubanID"></el-input>
             </el-form-item>
             <el-form-item label="封面" prop="image">
-              <el-input
-                placeholder="请填写该书的封面图片"
-                v-model="formData.image"
-              ></el-input>
+              <el-input placeholder="请填写该书的封面图片" v-model="formData.image"></el-input>
             </el-form-item>
             <el-form-item label="简介" prop="summary">
               <el-input
@@ -108,12 +80,8 @@
         </el-row>
       </el-form>
       <div class="btns clearfix">
-        <el-button class="pull-right" @click="reset" style="margin-left: 10px"
-          >重置</el-button
-        >
-        <el-button type="primary" class="pull-right" @click="save"
-          >保存</el-button
-        >
+        <el-button class="pull-right" @click="reset" style="margin-left: 10px">重置</el-button>
+        <el-button type="primary" class="pull-right" @click="save">保存</el-button>
       </div>
     </el-card>
   </div>

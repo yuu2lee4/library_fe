@@ -21,13 +21,9 @@
             <div style="padding: 10px">
               <div class="title" :title="book.title">{{ book.title }}</div>
               <div class="num clearfix">
-                <span class="pull-left"
-                  >总数：{{ book.identifierList.length }}</span
-                >
+                <span class="pull-left">总数：{{ book.identifierList.length }}</span>
                 <span class="pull-right"
-                  >剩余：{{
-                    book.identifierList.length - book.borrowers.length
-                  }}</span
+                  >剩余：{{ book.identifierList.length - book.borrowers.length }}</span
                 >
               </div>
             </div>
@@ -39,8 +35,7 @@
           size="small"
           :disabled="
             book.identifierList.length - book.borrowers.length <= 0 ||
-            (userInfo &&
-              book.borrowers.some((user) => user.name == userInfo.name))
+            (userInfo && book.borrowers.some((user) => user.name == userInfo.name))
           "
           @click="borrow(index)"
           >借阅</el-button

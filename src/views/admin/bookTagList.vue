@@ -1,40 +1,22 @@
 <template>
   <div id="admin_bookList">
     <el-button-group style="margin-bottom: 10px">
-      <el-button
-        :icon="ElIconEdit"
-        size="small"
-        title="编辑"
-        @click="edit"
-      ></el-button>
-      <el-button
-        :icon="ElIconDelete"
-        size="small"
-        title="删除"
-        @click="remove"
-      ></el-button>
+      <el-button :icon="ElIconEdit" size="small" title="编辑" @click="edit"></el-button>
+      <el-button :icon="ElIconDelete" size="small" title="删除" @click="remove"></el-button>
       <router-link to="/admin/book/addTag"
         ><el-button :icon="ElIconPlus" size="small" title="新增"></el-button
       ></router-link>
     </el-button-group>
-    <el-table
-      :data="tags"
-      border
-      @selection-change="select"
-      style="width: 100%"
-    >
+    <el-table :data="tags" border @selection-change="select" style="width: 100%">
       <el-table-column type="selection" width="50"> </el-table-column>
-      <el-table-column property="name" label="一级分类" width="130">
-      </el-table-column>
+      <el-table-column property="name" label="一级分类" width="130"> </el-table-column>
       <el-table-column label="二级分类">
         <template v-slot="{ row }">
           <span>{{ row.tags_2nd.join() }}</span>
         </template>
       </el-table-column>
-      <el-table-column property="meta.createAt" label="添加时间" width="300">
-      </el-table-column>
-      <el-table-column property="meta.updateAt" label="更新时间" width="300">
-      </el-table-column>
+      <el-table-column property="meta.createAt" label="添加时间" width="300"> </el-table-column>
+      <el-table-column property="meta.updateAt" label="更新时间" width="300"> </el-table-column>
     </el-table>
     <el-pagination
       class="pull-right"
@@ -52,11 +34,7 @@
 </template>
 
 <script>
-import {
-  Edit as ElIconEdit,
-  Delete as ElIconDelete,
-  Plus as ElIconPlus,
-} from '@element-plus/icons'
+import { Edit as ElIconEdit, Delete as ElIconDelete, Plus as ElIconPlus } from '@element-plus/icons'
 import dateFormat from '@/mixins/dateFormat'
 import { fetch } from '@/assets/js/fetch'
 

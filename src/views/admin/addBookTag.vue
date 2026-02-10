@@ -9,18 +9,9 @@
           </router-link>
         </div>
       </template>
-      <el-form
-        :model="formData"
-        label-width="86px"
-        style="padding: 20px"
-        ref="form"
-        :rules="rules"
-      >
+      <el-form :model="formData" label-width="86px" style="padding: 20px" ref="form" :rules="rules">
         <el-form-item label="分类名" prop="name">
-          <el-input
-            placeholder="请填写一级分类的名称"
-            v-model="formData.name"
-          ></el-input>
+          <el-input placeholder="请填写一级分类的名称" v-model="formData.name"></el-input>
         </el-form-item>
         <el-form-item label="二级分类">
           <el-tag
@@ -33,18 +24,12 @@
           >
             {{ tag }}
           </el-tag>
-          <el-button plain type="success" @click="dialogVisible = true"
-            >增加</el-button
-          >
+          <el-button plain type="success" @click="dialogVisible = true">增加</el-button>
         </el-form-item>
       </el-form>
       <div class="btns clearfix">
-        <el-button class="pull-right" @click="reset" style="margin-left: 10px"
-          >重置</el-button
-        >
-        <el-button type="primary" class="pull-right" @click="save"
-          >保存</el-button
-        >
+        <el-button class="pull-right" @click="reset" style="margin-left: 10px">重置</el-button>
+        <el-button type="primary" class="pull-right" @click="save">保存</el-button>
       </div>
     </el-card>
     <el-dialog title="添加二级分类" v-model="dialogVisible" width="330px">
@@ -101,11 +86,9 @@ export default {
     getBookTag() {
       if (this.$route.query.id) {
         this.id = this.$route.query.id
-        fetch({ method: '/tag/' + this.$route.query.id, type: 'get' }).then(
-          (res) => {
-            this.formData = res
-          }
-        )
+        fetch({ method: '/tag/' + this.$route.query.id, type: 'get' }).then((res) => {
+          this.formData = res
+        })
       } else {
         this.reset()
       }

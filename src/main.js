@@ -15,9 +15,10 @@ app.config.globalProperties.routerAppend = (path, pathToAppend) => {
 }
 
 //app.use(VueResource)
-app.use(Element, {
-  locale: zhCn,
-})
-.use(router)
-.use(store)
-.mount('#app')
+app
+  .use(Element, {
+    locale: zhCn,
+  })
+  .use(router)
+  .use(store)
+  .mount('#app')

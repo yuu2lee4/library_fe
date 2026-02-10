@@ -19,9 +19,7 @@
             <span class="iconfont icon-head userHead"></span>
             <template v-slot:dropdown>
               <el-dropdown-menu>
-                <router-link to="/user"
-                  ><el-dropdown-item>个人资料</el-dropdown-item></router-link
-                >
+                <router-link to="/user"><el-dropdown-item>个人资料</el-dropdown-item></router-link>
                 <el-dropdown-item @click="logout">退出</el-dropdown-item>
               </el-dropdown-menu>
             </template>
@@ -34,11 +32,7 @@
               @click="registerVisible = true"
               >注册</el-button
             >
-            <el-button
-              :plain="true"
-              type="success"
-              class="login"
-              @click="loginVisible = true"
+            <el-button :plain="true" type="success" class="login" @click="loginVisible = true"
               >登录</el-button
             >
           </template>
@@ -50,19 +44,10 @@
         <component :is="Component" />
       </keep-alive>
     </router-view>
-    <el-dialog
-      v-if="!isLogin"
-      class="dialog"
-      v-model="registerVisible"
-      size="tiny"
-    >
+    <el-dialog v-if="!isLogin" class="dialog" v-model="registerVisible" size="tiny">
       <div style="padding: 0 45px">
         <div class="title">使用邮箱注册</div>
-        <el-form
-          :model="registerForm"
-          :rules="registerRules"
-          ref="registerForm"
-        >
+        <el-form :model="registerForm" :rules="registerRules" ref="registerForm">
           <el-form-item prop="name">
             <el-input v-model="registerForm.name" placeholder="邮箱">
               <template v-slot:append>
@@ -76,10 +61,7 @@
             </el-input>
           </el-form-item>
           <el-form-item prop="pin">
-            <el-input
-              v-model="registerForm.pin"
-              placeholder="验证码"
-            ></el-input>
+            <el-input v-model="registerForm.pin" placeholder="验证码"></el-input>
           </el-form-item>
           <el-form-item prop="password">
             <el-input
@@ -98,17 +80,10 @@
             ></el-input>
           </el-form-item>
         </el-form>
-        <el-button type="danger" @click="register" style="width: 100%"
-          >注册</el-button
-        >
+        <el-button type="danger" @click="register" style="width: 100%">注册</el-button>
       </div>
     </el-dialog>
-    <el-dialog
-      v-if="!isLogin"
-      class="dialog"
-      v-model="loginVisible"
-      size="tiny"
-    >
+    <el-dialog v-if="!isLogin" class="dialog" v-model="loginVisible" size="tiny">
       <div style="padding: 0 45px">
         <div class="title">使用邮箱登录</div>
         <el-form :model="loginForm" :rules="loginRules" ref="loginForm">
@@ -125,25 +100,13 @@
           </el-form-item>
           <!-- 此出预留极验的滑块拼图验证码 -->
         </el-form>
-        <el-button type="danger" @click="login" style="width: 100%"
-          >登录</el-button
-        >
+        <el-button type="danger" @click="login" style="width: 100%">登录</el-button>
         <div style="margin-top: 12px">
-          <a
-            @click="resetVisible = true"
-            href="javascript:;"
-            style="color: #9a0000"
-            >忘记密码？</a
-          >
+          <a @click="resetVisible = true" href="javascript:;" style="color: #9a0000">忘记密码？</a>
         </div>
       </div>
     </el-dialog>
-    <el-dialog
-      v-if="!isLogin"
-      class="dialog"
-      v-model="resetVisible"
-      size="tiny"
-    >
+    <el-dialog v-if="!isLogin" class="dialog" v-model="resetVisible" size="tiny">
       <div style="padding: 0 45px">
         <div class="title">重置密码</div>
         <el-form :model="resetForm" :rules="resetRules" ref="resetForm">
@@ -180,9 +143,7 @@
             ></el-input>
           </el-form-item>
         </el-form>
-        <el-button type="danger" @click="resetPW" style="width: 100%"
-          >重置</el-button
-        >
+        <el-button type="danger" @click="resetPW" style="width: 100%">重置</el-button>
       </div>
     </el-dialog>
   </div>
@@ -266,9 +227,7 @@ export default {
           },
           { len: 5, message: '长度为5个字符', trigger: 'blur' },
         ],
-        password: [
-          { validator: validatePass('registerForm'), trigger: 'blur' },
-        ],
+        password: [{ validator: validatePass('registerForm'), trigger: 'blur' }],
         repassword: [{ validator: checkPass('registerForm'), trigger: 'blur' }],
       },
       resetRules: {
@@ -379,8 +338,7 @@ export default {
       this.isLogin = false
     },
     async getPin(form, checkUser = true) {
-      if (!this[form + 'Form'].name)
-        return this.$message.warning('请输入邮箱！')
+      if (!this[form + 'Form'].name) return this.$message.warning('请输入邮箱！')
       let res = await fetch({
         method: '/user/getPin',
         data: { name: this[form + 'Form'].name, checkUser: checkUser },

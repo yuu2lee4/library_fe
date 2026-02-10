@@ -11,14 +11,14 @@
       >
         <el-sub-menu v-for="(sub, subindex) in menu" :key="sub.name" :index="`${subindex}`">
           <template #title>
-            <el-icon><component :is="sub.icon" /></el-icon>{{sub.name}}
+            <el-icon><component :is="sub.icon" /></el-icon>{{ sub.name }}
           </template>
-          <el-menu-item 
+          <el-menu-item
             v-for="(item, index) in sub.list"
             :key="item.name"
             :index="`${subindex}_${index}`"
             :route="{ path: item.path }"
-            >
+          >
             {{ item.name }}
           </el-menu-item>
         </el-sub-menu>
@@ -35,18 +35,16 @@
         >
       </header>
       <div class="pageToolbar">
-        <el-breadcrumb
-          separator="/"
-          class="pull-left"
-          style="line-height: 18px"
-        >
-          <el-breadcrumb-item v-for="item of breadcrumbList" :key="item">{{ item }}</el-breadcrumb-item>
+        <el-breadcrumb separator="/" class="pull-left" style="line-height: 18px">
+          <el-breadcrumb-item v-for="item of breadcrumbList" :key="item">{{
+            item
+          }}</el-breadcrumb-item>
         </el-breadcrumb>
         <div class="tools pull-right">
           <el-icon :title="fullscreenText" @click="gotoFullscreen"><FullScreen /></el-icon>
         </div>
       </div>
-      <router-view class="iframe"/>
+      <router-view class="iframe" />
     </section>
   </div>
 </template>
@@ -66,20 +64,26 @@ export default {
     menuActive: '0_0',
     menuOpeneds: [],
     breadcrumbList: [],
-    menu: [{
+    menu: [
+      {
         name: '书籍管理',
         icon: 'Message',
-        list: [{
-          name: '书籍列表',
-          path: '/admin/book/list',
-        }, {
-          name: '书籍分类',
-          path: '/admin/book/tagList',
-        }, {
-          name: '借出列表',
-          path: '/admin/book/borrowedList',
-        }]
-    }],
+        list: [
+          {
+            name: '书籍列表',
+            path: '/admin/book/list',
+          },
+          {
+            name: '书籍分类',
+            path: '/admin/book/tagList',
+          },
+          {
+            name: '借出列表',
+            path: '/admin/book/borrowedList',
+          },
+        ],
+      },
+    ],
   }),
   computed: {
     fullscreenText() {
@@ -94,13 +98,13 @@ export default {
             if (item.path === val.path) {
               this.menuActive = `${subindex}_${index}`
               this.menuOpeneds = [`${subindex}`]
-              this.breadcrumbList = [sub.name, item.name];
-              break;
+              this.breadcrumbList = [sub.name, item.name]
+              break
             }
           }
         }
       },
-      immediate: true
+      immediate: true,
     },
   },
   beforeRouteEnter(to, from, next) {

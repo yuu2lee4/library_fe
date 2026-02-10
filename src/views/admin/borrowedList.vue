@@ -12,28 +12,12 @@
       exported ? '重新下载' : '点击下载'
     }}</a>
     <el-table :data="books" border style="width: 100%">
-      <el-table-column property="isbn" label="ISBN" width="140">
+      <el-table-column property="isbn" label="ISBN" width="140"> </el-table-column>
+      <el-table-column property="title" label="书名" show-overflow-tooltip width="150">
       </el-table-column>
-      <el-table-column
-        property="title"
-        label="书名"
-        show-overflow-tooltip
-        width="150"
-      >
+      <el-table-column property="author" label="作者" show-overflow-tooltip width="120">
       </el-table-column>
-      <el-table-column
-        property="author"
-        label="作者"
-        show-overflow-tooltip
-        width="120"
-      >
-      </el-table-column>
-      <el-table-column
-        property="identifierList.length"
-        label="总数"
-        align="center"
-        width="70"
-      >
+      <el-table-column property="identifierList.length" label="总数" align="center" width="70">
       </el-table-column>
       <el-table-column label="分类" show-overflow-tooltip width="120">
         <template v-slot="{ row }">
@@ -44,12 +28,8 @@
         <template v-slot="{ row }">
           <ul style="list-style: none; padding: 0">
             <li v-for="borrower in row.borrowers" :key="borrower.name">
-              <span style="display: inline-block; width: 150px">{{
-                borrower.name
-              }}</span>
-              <span style="display: inline-block; width: 150px">{{
-                borrower.identifier
-              }}</span>
+              <span style="display: inline-block; width: 150px">{{ borrower.name }}</span>
+              <span style="display: inline-block; width: 150px">{{ borrower.identifier }}</span>
               <span>{{ dateFormat(borrower.date) }}</span>
             </li>
           </ul>

@@ -53,4 +53,3 @@ window.router = VueRouter.createRouter({
 })
 
 export default window.router
-
