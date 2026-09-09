@@ -46,7 +46,6 @@
         </template>
       </el-table-column>
       <el-table-column property="image" label="封面" show-overflow-tooltip> </el-table-column>
-      <el-table-column property="doubanID" label="豆瓣ID" width="100"> </el-table-column>
       <el-table-column property="summary" label="简介" show-overflow-tooltip> </el-table-column>
     </el-table>
     <el-pagination

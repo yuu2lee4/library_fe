@@ -264,7 +264,7 @@ export default {
     if (isLogin()) {
       try {
         const res = await fetch({ method: '/user', type: 'get' })
-        cookie.set('user', res)
+        cookie.set('user', JSON.stringify(res))
       } catch (e) {
         cookie.remove('user')
       }
@@ -296,7 +296,7 @@ export default {
             this.$store.commit('updateUserInfo', res)
             this.isLogin = true
             this.registerVisible = false
-            cookie.set('user', res)
+            cookie.set('user', JSON.stringify(res))
             this.$refs.registerForm.resetFields()
           }
         }
@@ -312,7 +312,7 @@ export default {
             this.$store.commit('updateUserInfo', res)
             this.isLogin = true
             this.loginVisible = false
-            cookie.set('user', res)
+            cookie.set('user', JSON.stringify(res))
             this.$refs.loginForm.resetFields()
           }
         }

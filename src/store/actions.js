@@ -8,12 +8,12 @@ export default {
     if (fromServer) {
       res = await fetch({ method: '/user', type: 'get' })
       ctx.commit('updateUserInfo', res)
-      cookie.set('user', res)
+      cookie.set('user', JSON.stringify(res))
     } else {
       if (ctx.state.userInfo) {
         res = ctx.state.userInfo
       } else {
-        res = cookie.getJSON('user')
+        res = JSON.parse(cookie.get('user') || 'null')
         if (res) ctx.commit('updateUserInfo', res)
       }
     }

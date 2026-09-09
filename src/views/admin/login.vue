@@ -40,7 +40,7 @@ export default {
     },
   }),
   beforeRouteEnter(to, from, next) {
-    const user = cookie.getJSON('user')
+    const user = JSON.parse(cookie.get('user') || 'null')
     if (user && user.role > 10) {
       next('/admin')
     } else {
@@ -54,7 +54,7 @@ export default {
           const res = await fetch({ method: '/user/login', data: this.form })
           if (res && res.role > 10) {
             this.$store.commit('updateUserInfo', res)
-            cookie.set('user', res)
+            cookie.set('user', JSON.stringify(res))
             this.$router.push('/admin')
           } else {
             this.$message.warning('这不是一个管理员账号！')

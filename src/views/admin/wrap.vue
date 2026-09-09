@@ -108,7 +108,7 @@ export default {
     },
   },
   beforeRouteEnter(to, from, next) {
-    const user = cookie.getJSON('user')
+    const user = JSON.parse(cookie.get('user') || 'null')
     if (user && user.role > 10) {
       next()
     } else {
@@ -116,7 +116,7 @@ export default {
     }
   },
   beforeRouteUpdate(to, from, next) {
-    const user = cookie.getJSON('user')
+    const user = JSON.parse(cookie.get('user') || 'null')
     if (user && user.role > 10) {
       next()
     } else {

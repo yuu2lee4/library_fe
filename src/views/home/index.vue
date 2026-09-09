@@ -12,7 +12,7 @@
         style="margin-bottom: 10px"
       >
         <a
-          :href="'https://book.douban.com/subject/' + book.doubanID"
+          :href="book.detailURL"
           target="_blank"
           :title="book.summary"
         >

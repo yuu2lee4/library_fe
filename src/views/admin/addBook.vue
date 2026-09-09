@@ -92,6 +92,7 @@ export default {
     id: '',
     formData: {
       isbn: '',
+      detailURL: '',
       identifierList: [],
       title: '',
       summary: '',
@@ -160,6 +161,7 @@ export default {
             type: 'get',
           })
           this.formData.title = res.title || ''
+          this.formData.detailURL = res.detailURL || ''
           this.formData.summary = res.summary || ''
           this.formData.image = res.image || ''
           this.formData.author = res.author || ''
