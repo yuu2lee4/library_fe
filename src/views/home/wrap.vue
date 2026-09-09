@@ -159,6 +159,7 @@ import config from '@/config'
 import logo from '@/assets/image/logo.png'
 import { fetch } from '@/assets/js/fetch'
 import { isLogin, logout } from '@/assets/js/pub'
+import { useUserStore } from '@/store'
 
 export default {
   data() {
@@ -281,7 +282,7 @@ export default {
   created() {
     if (isLogin()) {
       this.isLogin = true
-      this.$store.dispatch('getUserInfo')
+      useUserStore().getUserInfo()
     }
   },
   methods: {
@@ -298,7 +299,7 @@ export default {
             data: this.registerForm,
           })
           if (res) {
-            this.$store.commit('updateUserInfo', res)
+            useUserStore().updateUserInfo(res)
             this.isLogin = true
             this.registerVisible = false
             cookie.set('user', JSON.stringify(res))
@@ -314,7 +315,7 @@ export default {
           const res = await fetch({ method, data: this.loginForm })
 
           if (res) {
-            this.$store.commit('updateUserInfo', res)
+            useUserStore().updateUserInfo(res)
             this.isLogin = true
             this.loginVisible = false
             cookie.set('user', JSON.stringify(res))

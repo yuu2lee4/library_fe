@@ -39,6 +39,7 @@
 import dateFormat from '@/mixins/dateFormat'
 import { fetch } from '@/assets/js/fetch'
 import { isLogin } from '@/assets/js/pub'
+import { useUserStore } from '@/store'
 
 export default {
   mixins: [dateFormat],
@@ -57,7 +58,7 @@ export default {
   },
   computed: {
     userInfo() {
-      return this.$store.state.userInfo
+      return useUserStore().userInfo
     },
   },
   methods: {

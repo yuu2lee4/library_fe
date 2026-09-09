@@ -26,6 +26,7 @@
 import cookie from 'js-cookie'
 import logo from '@/assets/image/logo.png'
 import { fetch } from '@/assets/js/fetch'
+import { useUserStore } from '@/store'
 
 export default {
   data: () => ({
@@ -56,7 +57,7 @@ export default {
         if (valid) {
           const res = await fetch({ method: '/user/login', data: this.form })
           if (res && res.role > 10) {
-            this.$store.commit('updateUserInfo', res)
+            useUserStore().updateUserInfo(res)
             cookie.set('user', JSON.stringify(res))
             this.$router.push('/admin')
           } else {

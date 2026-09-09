@@ -1,7 +1,7 @@
 import * as Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
+import { createPinia } from 'pinia'
 import Element from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 import zhCn from 'element-plus/dist/locale/zh-cn.mjs'
@@ -20,5 +20,5 @@ app
     locale: zhCn,
   })
   .use(router)
-  .use(store)
+  .use(createPinia())
   .mount('#app')

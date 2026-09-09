@@ -59,6 +59,7 @@
 
 <script>
 import { fetch } from '@/assets/js/fetch'
+import { useUserStore } from '@/store'
 
 export default {
   data: () => ({
@@ -83,7 +84,7 @@ export default {
   },
   computed: {
     userInfo() {
-      return this.$store.state.userInfo
+      return useUserStore().userInfo
     },
   },
   methods: {
