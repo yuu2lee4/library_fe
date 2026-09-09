@@ -18,7 +18,7 @@
                   placeholder="请填写该书的ISBN，然后点击右边按钮抓取信息"
                   v-model="formData.isbn"
                 ></el-input>
-                <el-button type="primary" class="btn" @click="fetchInfoFromDouBan">同步</el-button>
+                <el-button type="primary" class="btn" @click="fetchInfoByISBN">同步</el-button>
               </div>
             </el-form-item>
             <el-form-item label="标题" prop="title">
@@ -63,9 +63,6 @@
                 </el-option>
               </el-select>
             </el-form-item>
-            <el-form-item label="豆瓣ID" prop="doubanID">
-              <el-input placeholder="请填写该书的豆瓣ID" v-model="formData.doubanID"></el-input>
-            </el-form-item>
             <el-form-item label="封面" prop="image">
               <el-input placeholder="请填写该书的封面图片" v-model="formData.image"></el-input>
             </el-form-item>
@@ -97,7 +94,6 @@ export default {
       isbn: '',
       identifierList: [],
       title: '',
-      doubanID: '',
       summary: '',
       image: '',
       author: '',
@@ -118,21 +114,6 @@ export default {
         },
       ],
       title: [
-        {
-          required: true,
-        },
-      ],
-      doubanID: [
-        {
-          required: true,
-        },
-      ],
-      summary: [
-        {
-          required: true,
-        },
-      ],
-      image: [
         {
           required: true,
         },
@@ -171,17 +152,20 @@ export default {
     },
   },
   methods: {
-    async fetchInfoFromDouBan() {
+    async fetchInfoByISBN() {
       if (this.formData.isbn) {
-        const res = await fetch({
-          method: `/book/isbn/${this.formData.isbn}`,
-          type: 'get',
-        })
-        this.formData.title = res.name
-        this.formData.summary = res.description
-        this.formData.image = res.photoUrl
-        this.formData.author = res.author
-        this.formData.doubanID = res.douban
+        try {
+          const res = await fetch({
+            method: `/book/isbn/${encodeURIComponent(this.formData.isbn)}`,
+            type: 'get',
+          })
+          this.formData.title = res.title || ''
+          this.formData.summary = res.summary || ''
+          this.formData.image = res.image || ''
+          this.formData.author = res.author || ''
+        } catch (error) {
+          this.$message.error(error.message || '获取书籍信息失败')
+        }
       } else {
         this.$message.warning('请填写ISBN！')
       }
