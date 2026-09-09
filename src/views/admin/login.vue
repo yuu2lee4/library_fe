@@ -2,7 +2,8 @@
   <div id="admin_login">
     <el-card class="login_panel">
       <template v-slot:header>
-        <div>
+        <div class="brand">
+          <img :src="logo" alt="" />
           <span>管理系统后台</span>
         </div>
       </template>
@@ -23,10 +24,12 @@
 
 <script>
 import cookie from 'js-cookie'
+import logo from '@/assets/image/logo.png'
 import { fetch } from '@/assets/js/fetch'
 
 export default {
   data: () => ({
+    logo,
     form: {
       name: '',
       password: '',
@@ -76,6 +79,17 @@ export default {
     top: 54px;
     left: 50%;
     margin-left: -150px;
+
+    .brand {
+      display: flex;
+      align-items: center;
+
+      img {
+        width: 32px;
+        height: 32px;
+        margin-right: 8px;
+      }
+    }
   }
 }
 </style>

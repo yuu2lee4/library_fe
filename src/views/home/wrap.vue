@@ -2,7 +2,10 @@
   <div id="home">
     <header>
       <div class="wrapper">
-        <router-link class="logo_text" to="/">鲲鹏</router-link>
+        <router-link class="logo_text" to="/">
+          <img :src="logo" alt="" />
+          <span>鲲鹏</span>
+        </router-link>
         <div class="pull-right" style="margin-top: 6px">
           <el-input
             placeholder="搜索你喜欢的"
@@ -153,6 +156,7 @@
 import { Search as ElIconSearch } from '@element-plus/icons'
 import cookie from 'js-cookie'
 import config from '@/config'
+import logo from '@/assets/image/logo.png'
 import { fetch } from '@/assets/js/fetch'
 import { isLogin, logout } from '@/assets/js/pub'
 
@@ -183,6 +187,7 @@ export default {
     }
     this.ElIconSearch = ElIconSearch
     return {
+      logo,
       config,
       searchVal: '',
       registerValidating: false,
@@ -386,6 +391,15 @@ export default {
         float: left;
         font-size: 22px;
         line-height: 48px;
+        display: flex;
+        align-items: center;
+        height: 48px;
+
+        img {
+          width: 32px;
+          height: 32px;
+          margin-right: 6px;
+        }
       }
       .search {
         float: left;

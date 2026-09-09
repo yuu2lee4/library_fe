@@ -1,7 +1,10 @@
 <template>
   <div id="admin">
     <section id="leftPane" v-show="!fullScreen">
-      <div class="top">鲲鹏管理后台</div>
+      <div class="top">
+        <img :src="logo" alt="" />
+        <span>鲲鹏管理后台</span>
+      </div>
       <el-menu
         v-if="menu.length"
         class="menu"
@@ -52,6 +55,7 @@
 <script>
 import { Message, FullScreen } from '@element-plus/icons'
 import cookie from 'js-cookie'
+import logo from '@/assets/image/logo.png'
 import { logout } from '@/assets/js/pub'
 
 export default {
@@ -60,6 +64,7 @@ export default {
     FullScreen,
   },
   data: () => ({
+    logo,
     fullScreen: false, //全屏标志
     menuActive: '0_0',
     menuOpeneds: [],
@@ -168,6 +173,13 @@ export default {
     line-height: 54px;
     text-align: center;
     font-size: 20px;
+
+    img {
+      width: 36px;
+      height: 36px;
+      vertical-align: middle;
+      margin-right: 6px;
+    }
   }
   .menu {
     flex: 1;

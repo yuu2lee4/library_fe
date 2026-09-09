@@ -20,11 +20,13 @@
         <template v-slot="{ row }">
           <el-popover v-if="row.borrowers.length" trigger="hover" placement="top" :width="340">
             <table v-if="row.borrowers.length">
-              <tr>
-                <th>编号</th>
-                <th>借出人</th>
-                <th>借出时间</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>编号</th>
+                  <th>借出人</th>
+                  <th>借出时间</th>
+                </tr>
+              </thead>
               <tr v-for="borrower in row.borrowers" :key="borrower.name">
                 <td>{{ borrower.identifier }}</td>
                 <td>{{ borrower.name }}</td>
