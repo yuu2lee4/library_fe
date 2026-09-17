@@ -47,6 +47,7 @@
         <component :is="Component" />
       </keep-alive>
     </router-view>
+    <AiChatWidget v-if="isLogin" />
     <el-dialog v-if="!isLogin" class="dialog" v-model="registerVisible" size="tiny">
       <div style="padding: 0 45px">
         <div class="title">使用邮箱注册</div>
@@ -160,8 +161,12 @@ import logo from '@/assets/image/logo.png'
 import { fetch } from '@/assets/js/fetch'
 import { isLogin, logout } from '@/assets/js/pub'
 import { useUserStore } from '@/store'
+import AiChatWidget from '@/components/AiChatWidget.vue'
 
 export default {
+  components: {
+    AiChatWidget,
+  },
   data() {
     const validatePass = (form) => {
       return (rule, value, callback) => {
@@ -271,7 +276,7 @@ export default {
       try {
         const res = await fetch({ method: '/user', type: 'get' })
         cookie.set('user', JSON.stringify(res))
-      } catch (e) {
+      } catch {
         cookie.remove('user')
       }
       next()
